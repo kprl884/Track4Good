@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "78487815984",
+    "project_id": "track4good",
+    "storage_bucket": "track4good.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78487815984:android:ac3a1f719f3b44f8036af5",
+        "android_client_info": {
+          "package_name": "com.track4good.hackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78487815984-484366fv7687rvlsuqd551hcntv1od2h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.track4good.hackathon",
+            "certificate_hash": "1184cb9d109bc04ec505ab9ffc0c5385198b520a"
+          }
+        },
+        {
+          "client_id": "78487815984-ubckaosjgppi460hja7gams8uh20us7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9ZvDVKkfdHGkdWg_4CXKnEYLJGaf3XYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78487815984-ubckaosjgppi460hja7gams8uh20us7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

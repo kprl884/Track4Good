@@ -1,0 +1,4 @@
+rootProject.name = "Track4Good"
+include ':app'
+include ':data'
+include ':domain'
