@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Track4Good</string>
     <string name="menu_discover">Keşfedin</string>
     <string name="menu_favorite">Favoriler</string>
     <string name="menu_trip">Seyahatler</string>
