@@ -25,6 +25,7 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth.signOut()
         (activity as MainActivity).hideNavigationBar()
         Utils.after(3000) { checkUser() }
     }

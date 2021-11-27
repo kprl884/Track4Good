@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.track4good.hackathon.R
 import com.track4good.hackathon.common.BaseFragment
 import com.track4good.hackathon.databinding.FragmentRegisterBinding
@@ -32,6 +33,7 @@ class RegisterFragment @Inject constructor(
                         fullName, birthDate, hesCode,
                         userType, email, password
                     )
+                    navigateToDiscoveryFragment()
                 }
                 is ResultData.Failed -> {
                 }
@@ -45,6 +47,12 @@ class RegisterFragment @Inject constructor(
         })
     }
 
+    private fun navigateToDiscoveryFragment() {
+        findNavController().navigate(
+            R.id.action_registerFragment_to_discoveryFragment
+        )
+    }
+
     @InternalCoroutinesApi
     override fun viewCreated(view: View, savedInstanceState: Bundle?) {
         clickListeners()
@@ -55,7 +63,6 @@ class RegisterFragment @Inject constructor(
         binding.btnSignUp.setOnClickListener {
             if (validEmail() && validPassword())
                 viewModel.register(email, password)
-
         }
     }
 
@@ -80,8 +87,6 @@ class RegisterFragment @Inject constructor(
             Toast.makeText(context, "Must require @ and .", Toast.LENGTH_SHORT).show()
             return false
         }
-
-
         binding.textInputLayoutEmail.isErrorEnabled = false
 
         return true
