@@ -26,9 +26,8 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).hideNavigationBar()
-        findNavController().navigate(R.id.action_splashFragment_to_discoveryFragment)
-        //auth.signOut()
-        Utils.after(3000) { //checkUser()
+        auth.signOut()
+        Utils.after(3000) { checkUser()
              }
         }
 

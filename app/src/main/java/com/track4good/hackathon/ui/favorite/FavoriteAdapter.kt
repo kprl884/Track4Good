@@ -1,4 +1,5 @@
-package com.track4good.hackathon.ui.discovery
+package com.track4good.hackathon.ui.favorite
+
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,8 @@ import com.track4good.hackathon.databinding.AdvertCardviewItemBinding
 import com.track4good.hackathon.domain.entity.Advert
 import javax.inject.Inject
 
-class DiscoveryAdapter @Inject constructor(
-) : RecyclerView.Adapter<DiscoveryAdapter.ViewHolder>() {
+class FavoriteAdapter @Inject constructor(
+) : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
     private var onItemClickListener: ((id: String) -> Unit)? = null
 
@@ -59,7 +60,7 @@ class DiscoveryAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
-            holder.advertDescription.text = searchAdvertListData[position].description
+            holder.advertDescription.text = searchAdvertListData[position].description.toString()
             holder.advertImage.setImageResource(searchAdvertListData[position].drawableId)
         }.setOnClickListener {
             onItemClickListener?.let {

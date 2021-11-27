@@ -61,8 +61,9 @@ class RegisterFragment @Inject constructor(
     @InternalCoroutinesApi
     private fun clickListeners() {
         binding.btnSignUp.setOnClickListener {
-            if (validEmail() && validPassword())
+           // if (validEmail() && validPassword())
                 viewModel.register(email, password)
+            navigateToDiscoveryFragment()
         }
     }
 

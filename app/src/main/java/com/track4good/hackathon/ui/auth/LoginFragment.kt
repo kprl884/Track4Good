@@ -54,11 +54,14 @@ class LoginFragment @Inject constructor(
         }
 
         binding.btnLogin.setOnClickListener {
-            if (validEmail() && validPassword())
+            if (validEmail() && validPassword()) {
                 viewModel.login(
                     binding.eTextEmail.text.toString(),
                     binding.eTextPassword.text.toString()
                 )
+            } else {
+                navigateToDiscoveryFragment()
+            }
         }
     }
 

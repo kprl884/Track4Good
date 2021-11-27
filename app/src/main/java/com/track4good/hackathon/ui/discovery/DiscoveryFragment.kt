@@ -60,7 +60,6 @@ class DiscoveryFragment @Inject constructor(
     private fun setAdapter() {
         discoveryAdapter = DiscoveryAdapter()
         binding.rvDiscovery.adapter = discoveryAdapter
-
         binding.rvDiscovery.layoutManager = LinearLayoutManager(requireContext())
         discoveryAdapter.setOnItemClickListener {
             navigateToDetailFragment(it)
@@ -76,10 +75,12 @@ class DiscoveryFragment @Inject constructor(
     }
 
     private fun clickListeners() {
-
+        binding.notIv.setOnClickListener {
+            navigateToNotificationFragment()
+        }
     }
 
-    private fun navigateToLoginFragment() {
-        findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
+    private fun navigateToNotificationFragment() {
+        findNavController().navigate(R.id.action_discoveryFragment_to_notificationFragment)
     }
 }

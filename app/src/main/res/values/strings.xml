@@ -7,4 +7,7 @@
     <string name="menu_profile">Profil</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorilerim">Favorilerim</string>
+    <string name="profilim">Profilim</string>
+    <string name="not_req">42 numaralı konut ilanına gönderdiğiniz istek kabul edildi</string>
 </resources>

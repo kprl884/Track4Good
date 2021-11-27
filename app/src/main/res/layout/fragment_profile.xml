@@ -21,7 +21,7 @@
             android:layout_width="180dp"
             android:layout_height="48dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/raleway_semibold"
             android:text="Profilim"
             android:textColor="@color/profile_text_color"
@@ -33,7 +33,7 @@
             android:id="@+id/card_view_profile"
             android:layout_width="315dp"
             android:layout_height="177dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="35dp"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,85 +49,98 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/raleway_medium"
-                    android:text="@{user.fullName}"
+                    android:text="Merhaba Ecem"
                     android:textColor="@color/profile_text_color"
-                    android:textSize="20sp"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="full name" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/text_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/raleway_medium"
-                    android:text="@{user.mail}"
-                    android:textColor="@color/profile_text_color"
-                    android:textSize="20sp"
+                    android:layout_width="118dp"
+                    android:layout_height="115dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/pp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_name_and_surname"
-                    tools:text="email" />
+                    app:layout_constraintTop_toBottomOf="@id/text_name_and_surname" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btn_edit_profile"
-            android:layout_width="316dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/bg_profile_buttons"
-            android:drawableEnd="@drawable/profile_button"
-            android:elevation="40dp"
-            android:fontFamily="@font/raleway_medium"
-            android:gravity="center_vertical"
-            android:src="@drawable/bg_profile_buttons"
-            android:text="Edit Profile"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="Selin Demir"
+            android:textColor="#A1A1A1"
+            android:textSize="@dimen/_17sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_view_profile" />
 
-        <Button
-            android:id="@+id/btn_settings"
-            android:layout_width="316dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_profile_buttons"
-            android:drawableEnd="@drawable/profile_button"
-            android:elevation="40dp"
-            android:fontFamily="@font/raleway_medium"
-            android:gravity="center_vertical"
-            android:src="@drawable/bg_profile_buttons"
-            android:text="Settings"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+        <EditText
+            android:id="@+id/et_gmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="ecem_demir@gmail.com"
+            android:textColor="#A1A1A1"
+            android:textSize="@dimen/_17sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_edit_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="05388677487"
+            android:textColor="#A1A1A1"
+            android:textSize="@dimen/_17sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_gmail" />
+
+        <TextView
+            android:id="@+id/validate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:text="Kimlik Doğrulandı"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_phone" />
+
+        <ImageView
+            android:layout_width="41dp"
+            android:layout_height="34dp"
+            android:background="@drawable/validate"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="@id/validate"
+            app:layout_constraintStart_toEndOf="@id/validate"
+            app:layout_constraintTop_toTopOf="@id/validate" />
 
         <Button
-            android:id="@+id/btn_sign_out"
-            android:layout_width="316dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_profile_buttons"
-            android:drawableEnd="@drawable/profile_button"
-            android:elevation="40dp"
-            android:fontFamily="@font/raleway_medium"
-            android:gravity="center_vertical"
-            android:src="@drawable/bg_profile_buttons"
-            android:text="Sign Out"
-            android:textAllCaps="false"
-            android:textSize="20sp"
+            android:id="@+id/signOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00000000"
+            android:text="Çıkış yap"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_25sdp"
+            app:layout_constraintTop_toBottomOf="@id/validate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_settings" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

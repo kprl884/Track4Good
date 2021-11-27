@@ -2,9 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
-        android:icon="@drawable/abc_vector_test"
+        android:id="@+id/discoveryFragment"
+        android:icon="@drawable/ara"
         android:title="@string/menu_discover" />
+
+    <item
+        android:id="@+id/favoriteFragment"
+        android:icon="@drawable/save"
+        android:title="@string/favorilerim" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/profile"
+        android:title="@string/profilim" />
 
 
 </menu>

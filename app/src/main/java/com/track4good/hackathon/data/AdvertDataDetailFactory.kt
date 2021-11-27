@@ -10,25 +10,27 @@ class AdvertDataDetailFactory {
         val advertList = arrayListOf<Advert>(
             Advert(
                 id = "NFVERHBF243325",
-                title = "Burhaniye Home",
-                description = "Home For Free",
-                drawableId = R.drawable.common_google_signin_btn_icon_dark,
+                title = "Fethiye Ev",
+                description = "Fethiye · Çocuklu ailelere uygun \n" +
+                        " 70Tl Günlük",
+                drawableId = com.track4good.hackathon.R.drawable.evv,
                 advertOwner = generateAdvertHostOwner1(),
                 place = generatePlace1()
             ),
             Advert(
                 id = "BNI12BOUDDFJ13412",
-                title = "Uskudar Home",
-                description = "Home For Free",
-                drawableId = R.drawable.common_google_signin_btn_icon_dark,
+                title = "Beşiktaş Ev",
+                description = "Beşiktaş · Çocuklu ailelere uygun \n 40Tl Günlük",
+                drawableId = com.track4good.hackathon.R.drawable.evv2,
                 advertOwner = generateAdvertHostOwner2(),
                 place = generatePlace2()
             ),
             Advert(
                 id = "LKLOASKMNXJS2351",
-                title = "Maltepe Home",
-                description = "Home For Free",
-                drawableId = R.drawable.common_google_signin_btn_icon_dark,
+                title = "Midyat Ev",
+                description = "Midyat · Çocuklu ailelere uygun \n" +
+                        "20Tl Günlük",
+                drawableId = com.track4good.hackathon.R.drawable.evv3,
                 advertOwner = generateAdvertHostOwner3(),
                 place = generatePlace3()
             )
@@ -48,7 +50,7 @@ class AdvertDataDetailFactory {
             mail = "alparslan.koprulu@sahibinden.com",
             birthDate = "02/12/1998",
             hesCode = "32FG 341 D",
-            userPhoto = R.drawable.common_google_signin_btn_icon_dark
+            userPhoto = com.track4good.hackathon.R.drawable.pp
         )
 
     private fun generatePlace1(): Place =
@@ -65,7 +67,7 @@ class AdvertDataDetailFactory {
             mail = "ali.yuksel@sahibinden.com",
             birthDate = "01/10/1998",
             hesCode = "88FF 141 X",
-            userPhoto = R.drawable.common_google_signin_btn_icon_dark
+            userPhoto = com.track4good.hackathon.R.drawable.pp
         )
 
     private fun generatePlace2(): Place =
@@ -82,7 +84,7 @@ class AdvertDataDetailFactory {
             mail = "ecem.yasar@sahibinden.com",
             birthDate = "11/04/1996",
             hesCode = "32FF 336 Y",
-            userPhoto = R.drawable.common_google_signin_btn_icon_dark
+            userPhoto = com.track4good.hackathon.R.drawable.evv3
         )
 
     private fun generatePlace3(): Place =

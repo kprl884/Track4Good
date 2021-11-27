@@ -2,6 +2,7 @@ package com.track4good.hackathon.ui.detail
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.track4good.hackathon.MainActivity
@@ -49,11 +50,14 @@ class DetailFragment @Inject constructor(
 
 
     private fun clickListeners() {
-
+        binding.detailRequestBtn.setOnClickListener {
+            Toast.makeText(requireContext(), "İsteğiniz gönderilmiştir", Toast.LENGTH_LONG).show()
+        }
     }
 
 
     private fun updateUi(advert: Advert) {
         binding.detailItemTitle.text = advert.title
+        binding.detailItemDescription.text = advert.description
     }
 }

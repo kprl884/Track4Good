@@ -1,60 +1,82 @@
 package com.track4good.hackathon.ui.favorite
 
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.track4good.hackathon.MainActivity
 import com.track4good.hackathon.R
+import com.track4good.hackathon.common.BaseFragment
+import com.track4good.hackathon.databinding.FragmentFavoriteBinding
+import com.track4good.hackathon.domain.entity.Advert
+import com.track4good.hackathon.domain.entity.ResultData
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.InternalCoroutinesApi
+import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FavoriteFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class FavoriteFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+@AndroidEntryPoint
+class FavoriteFragment @Inject constructor(
+) : BaseFragment<FavoriteViewModel, FragmentFavoriteBinding>() {
+    override val layoutRes = R.layout.fragment_favorite
+    override val viewModel: FavoriteViewModel by viewModels()
+    private lateinit var favoriteAdapter: FavoriteAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun observeViewModel() {
+        viewModel.advertData.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is ResultData.Success -> {
+                    it.data?.let { it1 -> updateAdapterList(it1) }
+                }
+                is ResultData.Failed -> {
+                }
+                is ResultData.Loading -> {
+
+                }
+                is ResultData.Progress -> {
+
+                }
+            }
+        })
+    }
+
+    private fun updateAdapterList(advertList: ArrayList<Advert>) {
+        favoriteAdapter.searchAdvertListData = advertList
+        favoriteAdapter.notifyDataSetChanged()
+    }
+
+    @InternalCoroutinesApi
+    override fun viewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.getAdvert()
+        favoriteAdapter = FavoriteAdapter()
+        setAdapter()
+        (activity as MainActivity).showNavigationBar()
+        clickListeners()
+    }
+
+    private fun setAdapter() {
+        favoriteAdapter = FavoriteAdapter()
+        binding.favRv.adapter = favoriteAdapter
+        binding.favRv.layoutManager = LinearLayoutManager(requireContext())
+        favoriteAdapter.setOnItemClickListener {
+            navigateToDetailFragment(it)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+    private fun clickListeners() {
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FavoriteFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FavoriteFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun navigateToDetailFragment(id: String) {
+        val detailIdBundle =
+            bundleOf("detailAdvertId" to id)
+        findNavController().navigate(
+            R.id.action_favoriteFragment_to_detailFragment, detailIdBundle
+        )
     }
+
 }
