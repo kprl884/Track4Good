@@ -103,7 +103,11 @@ class RegisterFragment @Inject constructor(
         } else if (password!!.length < 7) {
             binding.eTextPassword.requestFocus()
             binding.textInputLayoutPassword.error = "Password is too short!"
-            Toast.makeText(context, "Must be longer than 7 characters ${binding.eTextPassword}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "Must be longer than 7 characters ${binding.eTextPassword}",
+                Toast.LENGTH_SHORT
+            ).show()
             return false
         } else if (password!!.length > 40) {
             binding.eTextPassword.requestFocus()
