@@ -5,7 +5,7 @@ data class User(
     var type: UserType,
     val fullName: String,
     val mail: String,
-    val birthDate: Long,
+    val birthDate: String,
     val hesCode: String,
     val userPhoto: Int
 )

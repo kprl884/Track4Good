@@ -70,6 +70,10 @@
         <action
             android:id="@+id/action_detailFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <argument
+            android:name="detailAdvertId"
+            app:argType="string"
+            android:defaultValue="-1" />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"

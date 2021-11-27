@@ -25,18 +25,18 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        auth.signOut()
         (activity as MainActivity).hideNavigationBar()
-        Utils.after(3000) { checkUser() }
-    }
+        findNavController().navigate(R.id.action_splashFragment_to_discoveryFragment)
+        //auth.signOut()
+        Utils.after(3000) { //checkUser()
+             }
+        }
 
-    private fun checkUser() {
-        if (auth.currentUser != null) {
-            findNavController().navigate(R.id.action_splashFragment_to_discoveryFragment)
-        } else {
-            findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+        private fun checkUser() {
+            if (auth.currentUser != null) {
+                findNavController().navigate(R.id.action_splashFragment_to_discoveryFragment)
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            }
         }
     }
-
-
-}

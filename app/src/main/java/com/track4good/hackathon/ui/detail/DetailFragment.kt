@@ -8,6 +8,7 @@ import com.track4good.hackathon.MainActivity
 import com.track4good.hackathon.R
 import com.track4good.hackathon.common.BaseFragment
 import com.track4good.hackathon.databinding.FragmentDetailBinding
+import com.track4good.hackathon.domain.entity.Advert
 import com.track4good.hackathon.domain.entity.ResultData
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -19,11 +20,12 @@ class DetailFragment @Inject constructor(
 ) : BaseFragment<DetailViewModel, FragmentDetailBinding>() {
     override val layoutRes = R.layout.fragment_detail
     override val viewModel: DetailViewModel by viewModels()
+
     override fun observeViewModel() {
-        viewModel.firebaseUserData.observe(viewLifecycleOwner, Observer {
+        viewModel.detailAdvertData.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is ResultData.Success -> {
-
+                    it.data?.let { it1 -> updateUi(it1) }
                 }
                 is ResultData.Failed -> {
                 }
@@ -40,6 +42,8 @@ class DetailFragment @Inject constructor(
     @InternalCoroutinesApi
     override fun viewCreated(view: View, savedInstanceState: Bundle?) {
         (activity as MainActivity).showNavigationBar()
+        val id = arguments?.get("detailAdvertId") as String
+        viewModel.getAdvert(id)
         clickListeners()
     }
 
@@ -48,4 +52,8 @@ class DetailFragment @Inject constructor(
 
     }
 
+
+    private fun updateUi(advert: Advert) {
+        binding.detailItemTitle.text = advert.title
+    }
 }

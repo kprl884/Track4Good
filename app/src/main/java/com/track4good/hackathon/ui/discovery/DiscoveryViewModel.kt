@@ -4,31 +4,26 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.track4good.hackathon.common.BaseViewModel
+import com.track4good.hackathon.data.AdvertDataListFactory
+import com.track4good.hackathon.domain.entity.Advert
 import com.track4good.hackathon.domain.entity.ResultData
-import com.track4good.hackathon.domain.usecase.auth.LoginUserAuthUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
 class DiscoveryViewModel @ViewModelInject constructor(
-    private val loginUserAuthUseCase: LoginUserAuthUseCase
+    private val localDetailAdvertListData: AdvertDataListFactory
 ) : BaseViewModel() {
 
-    private val _firebaseUserData = MutableLiveData<ResultData<Any>>()
-    val firebaseUserData: MutableLiveData<ResultData<Any>>
-        get() = _firebaseUserData
+    private val _advertData = MutableLiveData<ResultData<ArrayList<Advert>>>()
+    val advertData: MutableLiveData<ResultData<ArrayList<Advert>>>
+        get() = _advertData
 
     @InternalCoroutinesApi
-    fun login(userMail: String, userPassword: String) {
+    fun getAdvert() {
         viewModelScope.launch(Dispatchers.IO) {
-            _firebaseUserData.postValue(ResultData.Loading())
-            loginUserAuthUseCase.invoke(userMail, userPassword).collect { it ->
-                handleTask(it) {
-                    _firebaseUserData.postValue(it)
-                }
-            }
+            _advertData.postValue(ResultData.Success(localDetailAdvertListData.generateMockAdvertDataFactory()))
         }
     }
 }

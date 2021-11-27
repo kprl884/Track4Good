@@ -2,11 +2,11 @@ package com.track4good.hackathon.ui.discovery
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.FirebaseAuth
 import com.track4good.hackathon.MainActivity
 import com.track4good.hackathon.R
 import com.track4good.hackathon.common.BaseFragment
@@ -23,13 +23,12 @@ class DiscoveryFragment @Inject constructor(
 ) : BaseFragment<DiscoveryViewModel, FragmentDiscoveryBinding>() {
     override val layoutRes = R.layout.fragment_discovery
     override val viewModel: DiscoveryViewModel by viewModels()
-    private val auth by lazy { FirebaseAuth.getInstance() }
-    private lateinit var  discoveryAdapter : DiscoveryAdapter
+    private lateinit var discoveryAdapter: DiscoveryAdapter
     override fun observeViewModel() {
-        viewModel.firebaseUserData.observe(viewLifecycleOwner, Observer {
+        viewModel.advertData.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is ResultData.Success -> {
-
+                    it.data?.let { it1 -> updateAdapterList(it1) }
                 }
                 is ResultData.Failed -> {
                 }
@@ -45,28 +44,35 @@ class DiscoveryFragment @Inject constructor(
 
     @InternalCoroutinesApi
     override fun viewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.getAdvert()
         discoveryAdapter = DiscoveryAdapter()
+        setAdapter()
         (activity as MainActivity).showNavigationBar()
         clickListeners()
     }
 
 
-
     private fun updateAdapterList(advertList: ArrayList<Advert>) {
         discoveryAdapter.searchAdvertListData = advertList
+        discoveryAdapter.notifyDataSetChanged()
     }
 
     private fun setAdapter() {
-        binding.rvDiscovery.adapter = DiscoveryAdapter()
+        discoveryAdapter = DiscoveryAdapter()
+        binding.rvDiscovery.adapter = discoveryAdapter
+
         binding.rvDiscovery.layoutManager = LinearLayoutManager(requireContext())
         discoveryAdapter.setOnItemClickListener {
-            navigateToDetailFragment()
+            navigateToDetailFragment(it)
         }
     }
 
-    private fun navigateToDetailFragment(){
-        findNavController().navigate(R.id.action_discoveryFragment_to_detailFragment)
-
+    private fun navigateToDetailFragment(id: String) {
+        val detailIdBundle =
+            bundleOf("detailAdvertId" to id)
+        findNavController().navigate(
+            R.id.action_discoveryFragment_to_detailFragment, detailIdBundle
+        )
     }
 
     private fun clickListeners() {
