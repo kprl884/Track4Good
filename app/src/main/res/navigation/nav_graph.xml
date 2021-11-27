@@ -24,7 +24,11 @@
         android:id="@+id/discoveryFragment"
         android:name="com.track4good.hackathon.ui.discovery.DiscoveryFragment"
         android:label="fragment_discovery"
-        tools:layout="@layout/fragment_discovery" />
+        tools:layout="@layout/fragment_discovery" >
+        <action
+            android:id="@+id/action_discoveryFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.track4good.hackathon.ui.profile.ProfileFragment"
@@ -58,4 +62,18 @@
             android:id="@+id/action_splashFragment_to_discoveryFragment"
             app:destination="@id/discoveryFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.track4good.hackathon.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.track4good.hackathon.ui.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>

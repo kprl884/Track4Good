@@ -1,4 +1,4 @@
-package com.track4good.hackathon.ui.discovery
+package com.track4good.hackathon.ui.detail
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
@@ -11,8 +11,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-
-class DiscoveryViewModel @ViewModelInject constructor(
+class DetailViewModel @ViewModelInject constructor(
     private val loginUserAuthUseCase: LoginUserAuthUseCase
 ) : BaseViewModel() {
 

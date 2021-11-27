@@ -6,5 +6,6 @@ data class User(
     val fullName: String,
     val mail: String,
     val birthDate: Long,
-    val hesCode: String
+    val hesCode: String,
+    val userPhoto: Int
 )

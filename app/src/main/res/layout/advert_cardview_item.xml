@@ -16,15 +16,27 @@
 
             <ImageView
                 android:id="@+id/item_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_220sdp"
+                android:layout_height="@dimen/_220sdp"
                 android:layout_margin="@dimen/_5sdp"
                 android:padding="@dimen/_3sdp"
                 app:cardCornerRadius="35dp"
+                app:layout_constraintBottom_toTopOf="@id/item_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:background="@drawable/ic_baseline_date_range_24" />
+
+
+            <ImageView
+                android:id="@+id/item_save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_baseline_drive_file_rename_outline_24"
+                android:layout_margin="@dimen/_5sdp"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="@id/item_iv"
+                app:layout_constraintTop_toTopOf="@id/item_iv" />
 
             <TextView
                 android:id="@+id/item_description"
