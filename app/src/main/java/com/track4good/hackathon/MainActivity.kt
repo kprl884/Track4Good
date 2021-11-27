@@ -2,6 +2,7 @@ package com.track4good.hackathon
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
@@ -38,5 +39,13 @@ class MainActivity : AppCompatActivity() {
                 fragment.onActivityResult(requestCode, resultCode, data)
             }
         }
+    }
+
+    fun showNavigationBar() {
+        binding.navView.visibility = View.VISIBLE
+    }
+
+    fun hideNavigationBar() {
+        binding.navView.visibility = View.GONE
     }
 }

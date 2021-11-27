@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.track4good.hackathon.domain.entity.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F8"
+        tools:context=".ui.ProfileFragment">
+
+        <TextView
+            android:id="@+id/text_profile"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Profilim"
+            android:textColor="@color/profile_text_color"
+            android:textSize="34sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_profile"
+            android:layout_width="315dp"
+            android:layout_height="177dp"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_profile">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_name_and_surname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="@{user.fullName}"
+                    android:textColor="@color/profile_text_color"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="full name" />
+
+                <TextView
+                    android:id="@+id/text_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="@{user.mail}"
+                    android:textColor="@color/profile_text_color"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_name_and_surname"
+                    tools:text="email" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_edit_profile"
+            android:layout_width="316dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_profile_buttons"
+            android:drawableEnd="@drawable/profile_button"
+            android:elevation="40dp"
+            android:fontFamily="@font/raleway_medium"
+            android:gravity="center_vertical"
+            android:src="@drawable/bg_profile_buttons"
+            android:text="Edit Profile"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_view_profile" />
+
+        <Button
+            android:id="@+id/btn_settings"
+            android:layout_width="316dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_profile_buttons"
+            android:drawableEnd="@drawable/profile_button"
+            android:elevation="40dp"
+            android:fontFamily="@font/raleway_medium"
+            android:gravity="center_vertical"
+            android:src="@drawable/bg_profile_buttons"
+            android:text="Settings"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_edit_profile" />
+
+        <Button
+            android:id="@+id/btn_sign_out"
+            android:layout_width="316dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_profile_buttons"
+            android:drawableEnd="@drawable/profile_button"
+            android:elevation="40dp"
+            android:fontFamily="@font/raleway_medium"
+            android:gravity="center_vertical"
+            android:src="@drawable/bg_profile_buttons"
+            android:text="Sign Out"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_settings" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
